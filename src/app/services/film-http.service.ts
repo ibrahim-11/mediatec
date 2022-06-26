@@ -14,6 +14,10 @@ export class FilmHttpService {
     return this.http.get<FilmsModel[]>(url)
 
   }
+  public findById(id:number){
+    return this.http.get<any>(url+"/"+id)
+
+  }
 
 
 }
