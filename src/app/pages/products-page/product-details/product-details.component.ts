@@ -12,14 +12,16 @@ import { FilmHttpService } from 'src/app/services/film-http.service';
 export class ProductDetailsComponent implements OnInit {
     
 
-  donnefiltree? :FilmsModel[];
+
   id?: any;
-  data!:any;
-  datas :FilmsModel[]=[];
+  
+  datas :any[]=[];
+  datas2 :any[]=[];
   d! :any;
 
   constructor(private route :ActivatedRoute, private router : Router,public  service :  FilmHttpService) {
     this.service.findAll().subscribe((data)=>this.datas = data);
+    this.service.findAllAlbums().subscribe((data)=>this.datas2 = data);
 
    }
 

@@ -1,9 +1,20 @@
+
+
 <h1>Liste des films</h1>
+<div class="mb-5">
+    <app-product-list  [products]="filmsarray"></app-product-list>
+    
+</div>
+<hr>
+
+<h1>Liste des albums</h1>
 
 <div >
-    <app-product-list  [products]="filmsarray"></app-product-list>
-    <!-- <app-product-list></app-product-list> -->
+    <app-product-list  [products]="albumsArray"></app-product-list>
+
 </div>
+
+
 <!-- <h2>Albums</h2>
 <div >
     <app-product-list [products]="filmsarray"></app-product-list>
