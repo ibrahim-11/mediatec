@@ -16,7 +16,8 @@ export class ProductsPageComponent implements OnInit {
   
 
   constructor(private service :  FilmHttpService){
-    this.service.findAll().subscribe((data)=>this.filmsarray = data);
+    this.service.findAll()
+    .subscribe((data)=>this.filmsarray = data);
     this.service.findAllAlbums().subscribe((data)=>this.albumsArray = data);
 
     // this.service.demo().subscribe((data)=>this.title = data[].nom);
