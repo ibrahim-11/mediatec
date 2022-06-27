@@ -2,26 +2,56 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.2.
 
-## Development server
+## Json Server
+Pour ajouter cette dependance,on lance la commande ` npm i json-server`
+On cree un dossier db et dedans on met un fichier `db.json` qui va contenir les donnees sous forme d'objet JSON
+On va dans le fichier ``package.json`` on ajoute
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+"scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    ``"start:db": "json-server --watch db/db.json "``
+  }
 
-## Code scaffolding
+  ### Pour lancer le serveur
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+  Terminal `npm run start:db`
 
-## Build
+  # Creation des services
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+  Pour creer un service,on lance la commande `ng g s services/nom_du_service`
 
-## Running unit tests
+  # Creation des composants
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    Pour creer un composant,on lance la commande `ng g c nom_du_composant`
+  # Creation de Models
 
-## Running end-to-end tests
+  # Récuperation des donnees sur le serveur json
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+  On importe le module HttpClientModule de le fichier module.ts
 
-## Further help
+  On importe Httpclient dans le service.ts 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+  
+  constructor(private http :HttpClient) { }
+
+    public findAll(){
+    return this.http.get<FilmsModel[]>(url)
+
+  }
+
+  # Recuperation des donnees dans un composant dans
+
+  On cree un attribut de type du service dans le constructeur
+  a fin qu' on puisse appeler la methode qui recuper les donnees.
+  on s'abonnent  pour stocker les donnees dans un tableau 
+
+  constructor(private service :  FilmHttpService){
+    this.service.findAll()
+    .subscribe((data)=>this.filmsarray = data);
+    }
+

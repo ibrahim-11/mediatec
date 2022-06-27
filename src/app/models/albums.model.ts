@@ -1,4 +1,4 @@
-export interface Albums{
+export interface AlbumsModel{
     id:number,
     nom: string,
     artist:string,
