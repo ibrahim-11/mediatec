@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlbumsModel } from 'src/app/models/albums.model';
 import { FilmsModel } from 'src/app/models/films.model';
+import { AlbumHttpService } from 'src/app/services/album-http.service';
 import { FilmHttpService } from 'src/app/services/film-http.service';
 
 @Component({
@@ -15,10 +16,8 @@ export class ProductsPageComponent implements OnInit {
 
   
 
-  constructor(private service :  FilmHttpService){
-    this.service.findAll()
-    .subscribe((data)=>this.filmsarray = data);
-    this.service.findAllAlbums().subscribe((data)=>this.albumsArray = data);
+  constructor(private filmservice :  FilmHttpService,private albumservice :  AlbumHttpService){
+   
 
     // this.service.demo().subscribe((data)=>this.title = data[].nom);
   }
@@ -26,6 +25,9 @@ export class ProductsPageComponent implements OnInit {
   
 
   ngOnInit(): void {
+    this.filmservice.findAll()
+    .subscribe((data)=>this.filmsarray = data);
+    this.albumservice.findAll().subscribe((data)=>this.albumsArray = data);
   }
 
   debug(){
